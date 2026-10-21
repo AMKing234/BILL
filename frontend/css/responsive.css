@@ -1,0 +1,217 @@
+/* responsive.css - Fully Responsive Mobile, Tablet & Desktop Layouts */
+
+/* Tablet & Compact Desktop (769px to 1024px) */
+@media (max-width: 1024px) {
+    :root {
+        --sidebar-width: 230px;
+    }
+
+    .brand-meta .brand-title {
+        font-size: 15px;
+    }
+
+    .brand-meta .brand-sub {
+        font-size: 9px;
+    }
+
+    .nav-item {
+        padding: 9px 12px;
+        margin: 2px 8px;
+    }
+
+    .nav-label {
+        font-size: 13px;
+        display: inline-block !important; /* Ensure nav text is ALWAYS visible */
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px;
+    }
+
+    .quick-actions-bar {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .top-clock-pill {
+        display: none;
+    }
+}
+
+/* Mobile & Small Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    :root {
+        --sidebar-width: 270px;
+        --topbar-height: 60px;
+    }
+
+    #main-area {
+        margin-left: 0 !important;
+        width: 100%;
+    }
+
+    #sidebar {
+        transform: translateX(-100%);
+        box-shadow: none;
+        z-index: 1000;
+        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease;
+    }
+
+    #sidebar.open, #sidebar.active {
+        transform: translateX(0);
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+    }
+
+    .sidebar-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(9, 13, 22, 0.65);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        z-index: 999;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+    }
+
+    .sidebar-overlay.show, .sidebar-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    #mobile-menu-btn {
+        display: inline-flex !important;
+    }
+
+    .top-bar {
+        padding: 0 16px;
+    }
+
+    .top-action-btn span {
+        display: none;
+    }
+
+    .top-action-btn {
+        padding: 8px 12px;
+    }
+
+    .page-title-group h1 {
+        font-size: 18px;
+    }
+
+    .system-status-pill {
+        display: none;
+    }
+
+    #app-content {
+        padding: 16px 12px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+    }
+
+    .quick-actions-bar {
+        grid-template-columns: 1fr !important;
+    }
+
+    .dashboard-sections {
+        flex-direction: column;
+        gap: 16px !important;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .modal-content, .modal {
+        width: 95% !important;
+        max-width: 95% !important;
+        margin: 16px auto;
+        padding: 18px !important;
+    }
+
+    .modal-footer {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+
+    .modal-footer .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .page-actions {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .page-actions .btn {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .toolbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .toolbar .form-group, .toolbar .search-input {
+        width: 100%;
+    }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .login-card {
+        margin: 12px;
+        padding: 24px 18px !important;
+    }
+
+    .login-header h2 {
+        font-size: 18px;
+    }
+
+    .login-brand-icon {
+        width: 52px;
+        height: 52px;
+    }
+
+    .stat-card {
+        padding: 14px;
+    }
+
+    .stat-value {
+        font-size: 22px !important;
+    }
+
+    .table-responsive table {
+        font-size: 13px;
+    }
+
+    .toast-container {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+    }
+
+    .toast {
+        width: 100%;
+        min-width: unset;
+    }
+}

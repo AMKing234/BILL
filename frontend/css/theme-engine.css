@@ -1,0 +1,843 @@
+/* theme-engine.css - Layouts, Studio, Density & POS Modules */
+
+/* ── 1. Sidebar Variations ── */
+
+/* Mini / Compact Sidebar Mode (68px) */
+[data-sidebar="compact"] {
+    --sidebar-width: 68px;
+}
+
+[data-sidebar="compact"] #sidebar {
+    width: 68px;
+    padding: 12px 6px;
+    align-items: center;
+}
+
+[data-sidebar="compact"] #sidebar .brand-meta,
+[data-sidebar="compact"] #sidebar .nav-label,
+[data-sidebar="compact"] #sidebar .nav-section,
+[data-sidebar="compact"] #sidebar .user-details {
+    display: none !important;
+}
+
+[data-sidebar="compact"] #sidebar .sidebar-header {
+    padding: 0 0 16px 0;
+    justify-content: center;
+}
+
+[data-sidebar="compact"] #sidebar .brand-logo {
+    justify-content: center;
+}
+
+[data-sidebar="compact"] #sidebar .nav-item {
+    justify-content: center;
+    padding: 12px;
+    margin-bottom: 6px;
+    border-radius: var(--radius-md);
+    position: relative;
+}
+
+[data-sidebar="compact"] #sidebar .nav-item:hover::after {
+    content: attr(title);
+    position: absolute;
+    left: 74px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--bg-surface-elevated);
+    color: var(--text-main);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    z-index: 1000;
+    pointer-events: none;
+    animation: fadeIn 0.15s ease-out;
+}
+
+[data-sidebar="compact"] #sidebar .sidebar-footer {
+    padding: 10px 0;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Topbar Horizontal Navigation Mode */
+[data-sidebar="topbar"] {
+    --sidebar-width: 0px;
+}
+
+[data-sidebar="topbar"] #sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    flex-direction: row;
+    padding: 0 20px;
+    background: var(--bg-sidebar);
+    z-index: 80;
+    overflow-x: auto;
+}
+
+[data-sidebar="topbar"] .billing-layout {
+    flex-direction: column;
+}
+
+[data-sidebar="topbar"] #main-area {
+    margin-left: 0;
+    height: calc(100vh - 60px);
+}
+
+[data-sidebar="topbar"] #sidebar .sidebar-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+    padding: 4px 10px;
+    gap: 4px;
+}
+
+[data-sidebar="topbar"] #sidebar .nav-section {
+    display: none;
+}
+
+[data-sidebar="topbar"] #sidebar .nav-item {
+    padding: 8px 14px;
+    white-space: nowrap;
+    margin-bottom: 0;
+}
+
+[data-sidebar="topbar"] #sidebar .sidebar-footer {
+    border-top: none;
+    padding: 0 0 0 15px;
+    margin-left: auto;
+}
+
+/* ── 2. Density Variations ── */
+
+/* Compact High-Density Retail Mode */
+[data-density="compact"] {
+    font-size: 13px;
+}
+
+[data-density="compact"] .card {
+    padding: 14px;
+    margin-bottom: 14px;
+}
+
+[data-density="compact"] table th,
+[data-density="compact"] table td {
+    padding: 7px 10px;
+    font-size: 12.5px;
+}
+
+[data-density="compact"] .form-input,
+[data-density="compact"] .form-select {
+    padding: 6px 10px;
+    font-size: 13px;
+    height: 34px;
+}
+
+[data-density="compact"] .stat-card {
+    padding: 14px;
+}
+
+[data-density="compact"] .stat-value {
+    font-size: 20px;
+}
+
+/* Spacious Touch POS Mode */
+[data-density="spacious"] {
+    font-size: 15px;
+}
+
+[data-density="spacious"] .card {
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+[data-density="spacious"] table th,
+[data-density="spacious"] table td {
+    padding: 16px 20px;
+    font-size: 15px;
+}
+
+[data-density="spacious"] .form-input,
+[data-density="spacious"] .form-select {
+    padding: 12px 16px;
+    font-size: 15px;
+    height: 46px;
+}
+
+[data-density="spacious"] .btn {
+    padding: 12px 20px;
+    font-size: 15px;
+}
+
+/* ── 3. Express POS Quick Bar ── */
+.express-pos-bar {
+    background: var(--bg-surface-elevated);
+    border-bottom: 1px solid var(--border-color);
+    padding: 8px 24px;
+    position: relative;
+    z-index: 85;
+    animation: slideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.pos-bar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.pos-badge {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #F59E0B;
+    background: rgba(245, 158, 11, 0.15);
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.pos-quick-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pos-bar-close {
+    font-size: 20px;
+    color: var(--text-muted);
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.pos-bar-close:hover {
+    color: var(--text-main);
+    background: var(--bg-hover);
+}
+
+/* ── 4. Topbar Studio Trigger & Bubble ── */
+.theme-studio-trigger {
+    position: relative;
+}
+
+.btn-bubble-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: var(--primary-gradient);
+    color: #FFFFFF;
+    font-size: 9px;
+    font-weight: 800;
+    padding: 1px 5px;
+    border-radius: 999px;
+    box-shadow: 0 0 8px var(--primary-color);
+}
+
+/* ── 5. Theme Studio Modal Styling ── */
+.theme-studio-modal {
+    max-width: 960px;
+    width: 95vw;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-surface);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+}
+
+.studio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 24px 28px 16px 28px;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-surface-elevated);
+}
+
+.studio-badge {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--primary-color);
+    background: rgba(99, 102, 241, 0.12);
+    padding: 3px 8px;
+    border-radius: var(--radius-full);
+    display: inline-block;
+    margin-bottom: 6px;
+}
+
+.studio-title-group h2 {
+    font-size: 22px;
+    font-family: var(--font-display);
+    color: var(--text-main);
+    margin: 0;
+}
+
+.studio-title-group p {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.modal-close-btn {
+    font-size: 24px;
+    color: var(--text-muted);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-close-btn:hover {
+    color: var(--text-main);
+}
+
+.studio-nav-tabs {
+    display: flex;
+    gap: 8px;
+    padding: 12px 28px;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.studio-tab {
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text-muted);
+    transition: all 0.18s;
+}
+
+.studio-tab:hover {
+    color: var(--text-main);
+    background: var(--bg-hover);
+}
+
+.studio-tab.active {
+    color: #FFFFFF;
+    background: var(--primary-color);
+    box-shadow: 0 2px 8px var(--primary-glow);
+}
+
+.studio-tab-pane {
+    display: none;
+    padding: 24px 28px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.studio-tab-pane.active {
+    display: block;
+}
+
+.studio-toolbar {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.studio-search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.studio-search-wrapper svg {
+    position: absolute;
+    left: 14px;
+    color: var(--text-muted);
+}
+
+.studio-search-wrapper input {
+    width: 100%;
+    padding: 10px 14px 10px 40px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-main);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.studio-search-wrapper input:focus {
+    border-color: var(--primary-color);
+}
+
+.studio-category-pills {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.cat-pill {
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all 0.18s;
+}
+
+.cat-pill:hover {
+    border-color: var(--primary-color);
+    color: var(--text-main);
+}
+
+.cat-pill.active {
+    background: var(--primary-color);
+    color: #FFFFFF;
+    border-color: var(--primary-color);
+}
+
+.theme-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+    max-height: 52vh;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.theme-card {
+    background: var(--bg-surface-elevated);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+.theme-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+}
+
+.theme-card.active {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-color), var(--shadow-md);
+}
+
+.theme-preview-strip {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.preview-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    transition: transform 0.18s;
+}
+
+.theme-card:hover .preview-dot {
+    transform: scale(1.15);
+}
+
+.theme-card-info {
+    padding: 10px 12px;
+}
+
+.theme-card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--text-main);
+}
+
+.active-badge {
+    font-size: 9px;
+    font-weight: 800;
+    color: #10B981;
+    background: rgba(16, 185, 129, 0.15);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.theme-cat-tag {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-weight: 600;
+    display: block;
+    margin-top: 2px;
+}
+
+/* ── 6. Layout Controls Tab ── */
+.layout-controls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.layout-card {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+}
+
+.layout-card h3 {
+    font-size: 16px;
+    font-family: var(--font-display);
+    color: var(--text-main);
+    margin-bottom: 2px;
+}
+
+.layout-card-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+}
+
+.option-button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.opt-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: var(--bg-input);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    text-align: left;
+    transition: all 0.18s;
+}
+
+.opt-btn .opt-icon {
+    font-size: 18px;
+}
+
+.opt-btn strong {
+    font-size: 13px;
+    color: var(--text-main);
+    display: block;
+}
+
+.opt-btn small {
+    font-size: 11px;
+    color: var(--text-muted);
+    display: block;
+}
+
+.opt-btn:hover {
+    border-color: var(--primary-color);
+    background: var(--bg-hover);
+}
+
+.opt-btn.active {
+    border-color: var(--primary-color);
+    background: rgba(99, 102, 241, 0.08);
+}
+
+.toggle-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle-row strong {
+    display: block;
+    font-size: 13px;
+    color: var(--text-main);
+}
+
+.toggle-row small {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+/* ── 7. Custom Palette Studio ── */
+.custom-studio-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 24px;
+}
+
+@media (max-width: 768px) {
+    .custom-studio-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.custom-pickers-card {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+}
+
+.color-picker-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.color-picker-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.color-picker-item label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.picker-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.picker-input-wrap input[type="color"] {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: none;
+}
+
+.picker-input-wrap input[type="text"] {
+    width: 90px;
+    padding: 6px 10px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-main);
+    font-family: var(--font-mono);
+    font-size: 12px;
+}
+
+.custom-preview-card {
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    height: 100%;
+}
+
+.preview-badge {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+}
+
+.preview-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.preview-stat {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.preview-stat small {
+    display: block;
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+.preview-stat strong {
+    font-size: 18px;
+    font-family: var(--font-mono);
+}
+
+.preview-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* ── 8. POS Calculator Modal ── */
+.pos-calculator-modal {
+    width: 320px;
+    background: var(--bg-surface);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+}
+
+.calc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    background: var(--bg-surface-elevated);
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.calc-close {
+    font-size: 20px;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.calc-display-wrapper {
+    background: var(--bg-input);
+    padding: 16px 18px;
+    text-align: right;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.calc-history {
+    font-size: 12px;
+    color: var(--text-muted);
+    min-height: 18px;
+    font-family: var(--font-mono);
+}
+
+.calc-screen {
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    font-family: var(--font-mono);
+    font-weight: 800;
+    color: var(--text-main);
+    text-align: right;
+    outline: none;
+}
+
+.calc-keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    padding: 14px;
+}
+
+.calc-btn {
+    height: 48px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    background: var(--bg-surface-elevated);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    transition: all 0.15s;
+}
+
+.calc-btn:hover {
+    background: var(--bg-hover);
+    border-color: var(--primary-color);
+}
+
+.calc-btn:active {
+    transform: scale(0.95);
+}
+
+.calc-btn.op {
+    background: rgba(99, 102, 241, 0.14);
+    color: var(--primary-light);
+    border-color: rgba(99, 102, 241, 0.25);
+}
+
+.calc-btn.fn {
+    background: rgba(244, 63, 94, 0.12);
+    color: #F43F5E;
+}
+
+.calc-btn.eq {
+    background: var(--primary-gradient);
+    color: #FFFFFF;
+    font-weight: 800;
+    box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.calc-footer {
+    padding: 10px 14px 14px 14px;
+}
+
+/* ── 9. Keyboard Shortcuts HUD Modal ── */
+.shortcuts-hud-modal {
+    max-width: 520px;
+    width: 90vw;
+    background: var(--bg-surface);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+}
+
+.shortcuts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.shortcut-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 14px;
+    background: var(--bg-surface-elevated);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+}
+
+.shortcut-item kbd {
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary-light);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+    min-width: 44px;
+    text-align: center;
+}
+
+.shortcut-item span {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}

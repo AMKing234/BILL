@@ -1,0 +1,94 @@
+/* print.css - Styles for printing invoices and reports */
+
+@media print {
+    @page {
+        size: A4;
+        margin: 15mm;
+    }
+
+    body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        font-size: 12pt;
+    }
+
+    /* Hide UI elements that shouldn't be printed */
+    #sidebar,
+    .top-bar,
+    .btn,
+    .toast-container,
+    #modal-container,
+    .page-actions,
+    .toolbar,
+    .pagination {
+        display: none !important;
+    }
+
+    /* Adjust main layout */
+    #main-area {
+        margin-left: 0 !important;
+        height: auto !important;
+    }
+
+    #app-content {
+        padding: 0 !important;
+        background-color: #ffffff !important;
+        overflow: visible !important;
+    }
+
+    /* Card styling for print */
+    .card {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        background-color: transparent !important;
+    }
+
+    /* Table styling for print */
+    .data-table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        margin-bottom: 20px;
+    }
+
+    .data-table th, 
+    .data-table td {
+        border: 1px solid #ddd !important;
+        padding: 8px !important;
+        color: #000 !important;
+    }
+
+    .data-table th {
+        background-color: #f5f5f5 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Break rules */
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+    }
+
+    table {
+        page-break-inside: auto;
+    }
+
+    tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tfoot {
+        display: table-footer-group;
+    }
+
+    /* Show only invoice-print content if present */
+    .invoice-print {
+        display: block !important;
+        width: 100%;
+    }
+}
